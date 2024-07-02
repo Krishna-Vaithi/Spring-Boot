@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService{
@@ -32,5 +33,27 @@ public class DepartmentServiceImpl implements DepartmentService{
     @Override
     public void deleteDepartment(Long departmentId) {
         departmentRepository.deleteById(departmentId);
+    }
+
+    @Override
+    public Department updateDeaprtment(Long departmentId, Department department) {
+        Department depDB = departmentRepository.findById(departmentId).get();
+
+        if(Objects.isNull(department.getDepartmentName())&&
+        !"".equalsIgnoreCase(department.getDepartmentName())){
+            depDB.setDepartmentName(department.getDepartmentName());
+        }
+
+        if(Objects.isNull(department.getDepartmentAddress())&&
+                !"".equalsIgnoreCase(department.getDepartmentAddress())){
+            depDB.setDepartmentName(department.getDepartmentAddress());
+        }
+
+        if(Objects.isNull(department.getDepartmentCode())&&
+                !"".equalsIgnoreCase(department.getDepartmentCode())){
+            depDB.setDepartmentName(department.getDepartmentCode());
+        }
+
+        return departmentRepository.save(depDB);
     }
 }

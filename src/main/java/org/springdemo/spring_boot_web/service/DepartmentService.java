@@ -11,5 +11,7 @@ public interface DepartmentService {
 
     public Department fetchDepartmentById(Long departmentId);
 
-    void deleteDepartment(Long departmentId);
+    public void deleteDepartment(Long departmentId);
+
+    public Department updateDeaprtment(Long departmentId, Department department);
 }
