@@ -39,21 +39,20 @@ public class DepartmentServiceImpl implements DepartmentService{
     public Department updateDeaprtment(Long departmentId, Department department) {
         Department depDB = departmentRepository.findById(departmentId).get();
 
-        if(Objects.isNull(department.getDepartmentName())&&
+        if(Objects.nonNull(department.getDepartmentName())&&
         !"".equalsIgnoreCase(department.getDepartmentName())){
             depDB.setDepartmentName(department.getDepartmentName());
         }
 
-        if(Objects.isNull(department.getDepartmentAddress())&&
+        if(Objects.nonNull(department.getDepartmentAddress())&&
                 !"".equalsIgnoreCase(department.getDepartmentAddress())){
-            depDB.setDepartmentName(department.getDepartmentAddress());
+            depDB.setDepartmentAddress(department.getDepartmentAddress());
         }
 
-        if(Objects.isNull(department.getDepartmentCode())&&
+        if(Objects.nonNull(department.getDepartmentCode())&&
                 !"".equalsIgnoreCase(department.getDepartmentCode())){
-            depDB.setDepartmentName(department.getDepartmentCode());
+            depDB.setDepartmentCode(department.getDepartmentCode());
         }
-
         return departmentRepository.save(depDB);
     }
 }
