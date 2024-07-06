@@ -13,7 +13,7 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long departmentId;
     @NotBlank(message = "Please add Department Name")
-    @Length(min = 2, max=5)
+    /*@Length(min = 2, max=5)
     @Size(min = 2, max = 5)
     @Email
     @Future
@@ -23,7 +23,7 @@ public class Department {
     @Positive
     @PositiveOrZero
     @Negative
-    @NegativeOrZero
+    @NegativeOrZero*/
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;
